@@ -2,7 +2,6 @@ from PIL import Image
 from random import randint
 from os import system
 from os.path import exists
-space = lambda: print('\n')
 
 class Img:
 	def __init__(self, title):
@@ -14,8 +13,9 @@ class Img:
 
 	def save(self, effect):
 		self.img.save(f"{self.title}_{effect}.jpg", "JPEG")
-		space()
+		print('\n')
 		print(f'Новый файл сохранён под именем \"{self.title}_{effect}.jpg\"')
+		self.img.show()
 
 	def sepia(self):
 		power = powerInput(0, 10, 'Введите величину наложения сепии (от 0 до 10): ')
@@ -100,7 +100,7 @@ def router(obj, choose):
 filters = ['1. Сепия','2. Оттенки серого','3. Шум','4. Яркость','5. Негатив','6. Ч/б',]
 
 def printFilters():
-	space()
+	print('\n')
 	print('Доступные фильтры:')
 	for n in filters:
 		print(n)
@@ -145,7 +145,7 @@ def control():
 		title = titleInput()
 		obj = Img(title)
 		printFilters()
-		space()
+		print('\n')
 		choose = chooseFilter()
 		router(obj, choose)
 
